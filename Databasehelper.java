@@ -16,7 +16,7 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     public static class FeedData implements BaseColumns {
         public static final String DatbaseName = "passwordGenerator.db";
-        public static final String TableName = "passwords.db";
+        public static final String TableName = "passwords";
         public static final String COL2 = "ID";
         public static final String Col2 = "password";
         public static final String TAG = "Databasehelper";
@@ -72,7 +72,7 @@ public class Databasehelper extends SQLiteOpenHelper {
       //  }
 
         String createTable = "CREATE TABLE " + FeedData.TableName + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                " CoL2 TEXT)";
+                 FeedData.Col2 +" TEXT)";
 
 
         db.execSQL(createTable);
@@ -80,8 +80,8 @@ public class Databasehelper extends SQLiteOpenHelper {
 }
 
     public void createDatabase(SQLiteDatabase db){
-        String createTable = "CREATE TABLE " + FeedData.TableName + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                " CoL2 TEXT)";
+       /// String createTable = "CREATE TABLE " + FeedData.TableName + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+             //   " CoL2 TEXT)";
        // String createTable = "CREATE TABLE " + FeedData.TableName + " ("+FeedData.COL2+ "ID" + "INTEGER PRIMARY KEY AUTOINCREMENT," + FeedData.Col2 + "password)";
        // db.execSQL(createTable);
       //  String createTable = "CREATE TABLE " + FeedData.TableName + " ("+FeedData._ID+ "INTEGER PRIMARY KEY AUTOINCREMENT,"+ FeedData.COL2 + "ID" + FeedData.Col2 + "password)";
