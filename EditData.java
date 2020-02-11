@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class EditData extends AppCompatActivity {
     private static final String TAG = "EditData";
-    private Button btnSave,btnDelete;
+    private Button btnSave,btnDelete,btnBack;
     private EditText editable_item;
     Databasehelper myDatabasehelper;
     private String selectedPassword;
@@ -25,11 +25,12 @@ public class EditData extends AppCompatActivity {
     @Override
     protected void onCreate( @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.viewdata_layout);
-        btnSave = (Button) findViewById(R.id.btnSave);
+        setContentView(R.layout.edit_password_layout);
+       btnSave = (Button) findViewById(R.id.btnSave);
         btnDelete = (Button) findViewById(R.id.btnDelete);
         txtView = (TextView) findViewById(R.id.txtView);
         myDatabasehelper = new Databasehelper(this);
+        editable_item = (EditText) findViewById(R.id.editable_item);
 
         //get the intent extra from the ListDataActivity
         Intent receivedIntent = getIntent();
@@ -65,7 +66,16 @@ public class EditData extends AppCompatActivity {
         }
     });
 
+
+
+
+
 }
+
+    public void GotToListView(View view){
+        Intent intent = new Intent(this, ViewListContents.class);
+        startActivity(intent);
+    }
 
     public void AddData(String newEntry) {
         boolean insertData = myDatabasehelper.addData(newEntry);
