@@ -596,11 +596,10 @@ public class MainActivity extends AppCompatActivity {
         KeyGenParameterSpec keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC;
         String masterKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec);
 
-        public
+
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("ECDSA", "SC");
         ECGenParameterSpec spec = new ECGenParameterSpec("secp256k1");
         keyPairGenerator.initialize(spec, new SecureRandom());
-        return keyPairGenerator.generateKeyPair();
         /*
          * Generate a new EC key pair entry in the Android Keystore by
          * using the KeyPairGenerator API. The private key can only be
@@ -642,20 +641,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
 */
-        PublicKey unrestrictedPublicKey =
-                KeyFactory.getInstance(publicKey.getAlgorithm()).generatePublic(
-                        new X509EncodedKeySpec(publicKey.getEncoded()));
 
 
 
-        public void generateSecretKey(KeyGenParameterSpec keyGenParameterSpec){
+
+        public void generateSecretKey(){
             KeyGenerator keyGenerator = KeyGenerator.getInstance(
                     KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
             keyGenerator.init(keyGenParameterSpec);
             keyGenerator.generateKey();
         }
 //https://developer.android.com/reference/java/security/KeyStore.SecretKeyEntry
-        private SecretKey getSecretKey(final String alias){
+        private SecretKey getSecretKey(){
             KeyStore keyStore = KeyStore.getInstance("AndroidKeyStore");
 
             // Before the keystore can be accessed, it must be loaded.
